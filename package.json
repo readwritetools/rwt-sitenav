@@ -5,6 +5,9 @@
   "author": "Read Write Tools",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "bump-version": "npm version patch && git push && git push --tags"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/readwritetools/rwt-sitenav.git"
