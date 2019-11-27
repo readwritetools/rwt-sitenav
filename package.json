@@ -1,0 +1,27 @@
+{
+  "name": "rwt-sitenav",
+  "description": "Popout site navigation panel, a W3C standard Web Component",
+  "version": "1.0.0",
+  "author": "Read Write Tools",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/readwritetools/rwt-sitenav.git"
+  },
+  "keywords": [
+    "web-component",
+    "custom-element",
+    "html-template",
+    "shadow-dom"
+  ],
+  "bugs": {
+    "url": "https://github.com/readwritetools/rwt-sitenav/issues"
+  },
+  "homepage": "https://oss.readwritetools.com/web-components/rwt-sitenav.blue",
+  "files": [
+    "rwt-sitenav.blue",
+    "rwt-sitenav.css",
+    "rwt-sitenav.js"
+  ]
+}
