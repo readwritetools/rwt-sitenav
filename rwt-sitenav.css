@@ -27,12 +27,13 @@
 }
 #pull-out-overlay {
 	position: fixed;
-	top: 40%;
-	height: 20%;
+	top: var(--top);
+	bottom: var(--bottom);
 	opacity: 0.1;
 	transition: opacity 2.0s;
 	z-index: 3;
 	left: 0;
+	width: 2rem;
 }
 #pull-out-overlay:hover {
 	opacity: 0.9 !important;
