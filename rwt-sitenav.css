@@ -76,7 +76,7 @@
 #pull-out-overlay.hide-menu {
 }
 
-/* ------------------- #nav layout ------------------- */
+/* ------------------- layout ------------------- */
 #nav {
 	position: fixed;
 	top: var(--top);
@@ -92,12 +92,12 @@
 #nav.show-menu {
 	left: 0px;
 	transition: left 0.5s
-	}
+}
 #nav.hide-menu {
 	left: calc(-1.0 * var(--width));
 	transition: left 0.5s
-	}
-#nav h2 {
+}
+h2 {
 	margin-top: 4em;
 	margin-left: 2em;
     font-family: 'Source Sans Pro', sans-serif;
@@ -107,7 +107,7 @@
 }
 
 /* ------------------- typography ------------------- */
-#nav a {
+a {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 1.0rem;
 	line-height: 1.3em;
@@ -116,24 +116,21 @@
 	text-decoration: none;
 	border-bottom: none;
 }
-#nav li {
+li {
 	margin-bottom: 1.0em;
 }
-#nav .light { font-weight: 300; }
-#nav .medium { font-weight: 400; }
-#nav .heavy { font-weight: 600; }
 
 /* ---------------------- color --------------------- */
-#nav h2 a {
+h2 a {
 	color: var(--level1-color);
 	font-weight: bold;
 }
-#nav a {
+a {
 	color: var(--level2-color);
 	padding: 2px 10px;
 }
-#nav a:hover,
-#nav a:visited:hover {
+a:hover,
+a:visited:hover {
 	color: var(--accent-color);
 	background-color: var(--accent-background);
 	border-radius: 12px;
@@ -141,18 +138,19 @@
 }
 
 /* ------------------- decorations ------------------ */
-#nav ul {
+ul {
 	list-style: none;
 	padding: 0 1rem 0 2rem;
 }
-#nav a {
+a {
 	text-decoration: none;
 }
 
 /* ------------------- active name ------------------ */
 .activename {
 	background-color: var(--accent-background);
-	color: var(--accent-color);
+	font-size: 0.95rem;
+	letter-spacing: 0px;
 }
 .activename::before {
 	content: '►\00a0';
