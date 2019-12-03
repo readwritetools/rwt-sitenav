@@ -1,10 +1,12 @@
 /*=============================================================================
-  File:         bluephrase.com/css/sitenav.css
+
+  File:         /node_modules/rwt-sitenav/rwt-sitenav.css
   Language:     CSS
   Copyright:    Read Write Tools © 2019
-  License:      CC-BY-NC-ND 4.0
-  Initial date: Sep 13, 2019
-  Contents:     Pullout navigation menu
+  License:      MIT
+  Initial date: Nov 18, 2019
+  Contents:     Popout site navigation panel
+
 =============================================================================*/
 
 :host {

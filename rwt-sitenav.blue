@@ -1,11 +1,13 @@
 !blue 2.0
 //=============================================================================
+//
 //  File:         /node_modules/rwt-sitenav/rwt-sitenav.blue
 //  Language:     Blue-phrase
 //  Copyright:    Read Write Tools © 2019
-//  License:      CC-BY-NC-ND 4.0
+//  License:      MIT
 //  Initial date: Nov 18, 2019
 //  Contents:     Popout site navigation menu
+//
 //=============================================================================
 
 !option --fragment

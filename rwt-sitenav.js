@@ -2,8 +2,8 @@
 //
 // File:         /node_modules/rwt-sitenav/rwt-sitenav.js
 // Language:     ECMAScript 2015
-// Copyright:    Joe Honton © 2019
-// License:      CC-BY-NC-ND 4.0
+// Copyright:    Read Write Tools © 2019
+// License:      MIT
 // Initial date: Nov 18, 2019
 // Purpose:      Popout site navigation panel
 //
@@ -69,8 +69,9 @@ export default class RwtSitenav extends HTMLElement {
 	}
 	
 	//-------------------------------------------------------------------------
-	// intialization
+	// initialization
 	//-------------------------------------------------------------------------
+
 	//^ Fetch the user-specified menu items from the file specified in
 	//  the custom element's sourceref attribute, which is a URL.
 	//
@@ -225,14 +226,14 @@ export default class RwtSitenav extends HTMLElement {
 
 	//^ Send an event to close/hide all other registered popups
 	collapseOtherPopups() {
-		var collapseEvent = new CustomEvent('collapse-popup', {detail: { sender: 'Sitenav'}});
+		var collapseEvent = new CustomEvent('collapse-popup', {detail: { sender: 'RwtSitenav'}});
 		document.dispatchEvent(collapseEvent);
 	}
 	
 	//^ Listen for an event on the document instructing this component to close/hide
 	//  But don't collapse this component, if it was the one that generated it
 	onCollapsePopup(event) {
-		if (event.detail.sender == 'Sitenav')
+		if (event.detail.sender == 'RwtSitenav')
 			return;
 		else
 			this.hideMenu();
