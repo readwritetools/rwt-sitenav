@@ -249,6 +249,7 @@ export default class RwtSitenav extends HTMLElement {
 	//-------------------------------------------------------------------------
 	// component events
 	//-------------------------------------------------------------------------
+
 	// User has clicked in the nav panel, but not on a button
 	onClickNav(event) {
 		event.stopPropagation();
