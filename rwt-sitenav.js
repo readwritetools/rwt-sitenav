@@ -198,14 +198,29 @@ export default class RwtSitenav extends HTMLElement {
 		if (this.activeElement == null && this.hrefLevel3 != '') {
 			var anchorLevel3 = `a[href='${this.hrefLevel3}']`;							//  /semantax/action/area.blue
 			this.activeElement = this.nav.querySelector(anchorLevel3);
+			
+			if (this.activeElement == null) {
+				anchorLevel3 = `::slotted(a[href='${this.hrefLevel3}'])`;
+				this.activeElement = this.nav.querySelector(anchorLevel3);
+			}
 		}
 		if (this.activeElement == null && this.hrefLevel2 != '') {
 			var anchorLevel2 = `a[href='${this.hrefLevel2}']`;							//  /semantax/action.blue
 			this.activeElement = this.nav.querySelector(anchorLevel2);
+			
+			if (this.activeElement == null) {
+				anchorLevel2 = `::slotted(a[href='${this.hrefLevel2}'])`;
+				this.activeElement = this.nav.querySelector(anchorLevel2);
+			}
 		}
 		if (this.activeElement == null && this.hrefLevel1 != '') {
 			var anchorLevel1 = `a[href='${this.hrefLevel1}']`;							//  /semantax.blue
 			this.activeElement = this.nav.querySelector(anchorLevel1);
+			
+			if (this.activeElement == null) {
+				anchorLevel1 = `::slotted(a[href='${this.hrefLevel1}'])`;
+				this.activeElement = this.nav.querySelector(anchorLevel1);
+			}
 		}
 		if (this.activeElement) {
 			this.activeElement.scrollIntoView({block:'center'});
