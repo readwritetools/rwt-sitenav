@@ -160,11 +160,11 @@ a {
 	letter-spacing: 0px;
 }
 .activename::before {
-	content: '►\00a0';
+	content: '\25B6\00a0';
 	color: var(--accent-color);
 }
 .activename::after {
-	content: '\00a0◀';
+	content: '\00a0\25C0';
 	color: var(--accent-color);
 }
 
