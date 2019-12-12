@@ -11,6 +11,9 @@
 
 export default class RwtSitenav extends HTMLElement {
 
+	// The elementInstance is used to distinguish between multiple instances of this custom element
+	static elementInstance = 0;
+
 	constructor() {
 		super();
 		
@@ -21,6 +24,7 @@ export default class RwtSitenav extends HTMLElement {
 
 		// properties
 		this.shortcutKey = null;
+		this.collapseSender = `RwtSitenav ${RwtSitenav.elementInstance}`;
 
 		// touch interface for swipe left/right
 		this.swipe1 = null;
@@ -246,14 +250,14 @@ export default class RwtSitenav extends HTMLElement {
 
 	//^ Send an event to close/hide all other registered popups
 	collapseOtherPopups() {
-		var collapseEvent = new CustomEvent('collapse-popup', {detail: { sender: 'RwtSitenav'}});
+		var collapseEvent = new CustomEvent('collapse-popup', {detail: { this.collapseSender }});
 		document.dispatchEvent(collapseEvent);
 	}
 	
 	//^ Listen for an event on the document instructing this component to close/hide
 	//  But don't collapse this component, if it was the one that generated it
 	onCollapsePopup(event) {
-		if (event.detail.sender == 'RwtSitenav')
+		if (event.detail.sender == this.collapseSender)
 			return;
 		else
 			this.hideMenu();
