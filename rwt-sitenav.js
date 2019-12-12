@@ -19,6 +19,9 @@ export default class RwtSitenav extends HTMLElement {
 		this.pullOutButton = null;
 		this.pullOutOverlay = null;
 
+		// properties
+		this.shortcutKey = null;
+
 		// touch interface for swipe left/right
 		this.swipe1 = null;
 		this.swipe2 = null;
@@ -60,11 +63,9 @@ export default class RwtSitenav extends HTMLElement {
 		this.shadowRoot.appendChild(styleElement); 
 		
 		this.identifyChildren();
-		
 		this.registerEventListeners();
-		
+		this.initializeShortcutKey();
 		this.enableTouchSwipes();
-		
 		this.selectAndScrollActiveElement();
 	}
 	
@@ -149,6 +150,16 @@ export default class RwtSitenav extends HTMLElement {
 		this.pullOutButton.addEventListener('click', this.onClickPullOutButton.bind(this));
 	}
 
+	//^ Get the user-specified shortcut key. This will be used to open the dialog.
+	//  Valid values are "F1", "F2", etc., specified with the *shortcut attribute on the custom element
+	//  Default value is "F9"
+	initializeShortcutKey() {
+		if (this.hasAttribute('shortcut'))
+			this.shortcutKey = this.getAttribute('shortcut');
+		else
+			this.shortcutKey = 'F9';
+	}
+
 	// Register swipe left and swipe right as toggleMenu initiators
 	enableTouchSwipes() {
 		var boundToggleMenu = this.toggleMenu.bind(this);
@@ -212,15 +223,18 @@ export default class RwtSitenav extends HTMLElement {
 		event.stopPropagation();
 	}
 
-	// User has pressed the escape key
+	// close the dialog when user presses the ESC key
+	// toggle the dialog when user presses the assigned shortcutKey
 	onKeydownDocument(event) {		
 		if (event.key == "Escape") {
 			this.hideMenu();
 			event.stopPropagation();
 		}
-		if (event.key == "F10") {
+		// like 'F1', 'F2', etc
+		if (event.key == this.shortcutKey) {
 			this.toggleMenu(event);
 			event.stopPropagation();
+			event.preventDefault();
 		}
 	}
 
