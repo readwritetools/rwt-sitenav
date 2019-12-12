@@ -197,34 +197,25 @@ export default class RwtSitenav extends HTMLElement {
 		
 		if (this.activeElement == null && this.hrefLevel3 != '') {
 			var anchorLevel3 = `a[href='${this.hrefLevel3}']`;							//  /semantax/action/area.blue
-			this.activeElement = this.nav.querySelector(anchorLevel3);
-			
-			if (this.activeElement == null) {
-				anchorLevel3 = `::slotted(a[href='${this.hrefLevel3}'])`;
-				this.activeElement = this.nav.querySelector(anchorLevel3);
-			}
+			this.activeElement = this.nav.querySelector(anchorLevel3);					//  for elements added to shadow DOM
+			if (this.activeElement == null)
+				this.activeElement = this.querySelector(anchorLevel3);					//  for elements added as slot
 		}
 		if (this.activeElement == null && this.hrefLevel2 != '') {
 			var anchorLevel2 = `a[href='${this.hrefLevel2}']`;							//  /semantax/action.blue
-			this.activeElement = this.nav.querySelector(anchorLevel2);
-			
-			if (this.activeElement == null) {
-				anchorLevel2 = `::slotted(a[href='${this.hrefLevel2}'])`;
-				this.activeElement = this.nav.querySelector(anchorLevel2);
-			}
+			this.activeElement = this.nav.querySelector(anchorLevel2);					//  for elements added to shadow DOM
+			if (this.activeElement == null)
+				this.activeElement = this.querySelector(anchorLevel2);					//  for elements added as slot
 		}
 		if (this.activeElement == null && this.hrefLevel1 != '') {
 			var anchorLevel1 = `a[href='${this.hrefLevel1}']`;							//  /semantax.blue
-			this.activeElement = this.nav.querySelector(anchorLevel1);
-			
-			if (this.activeElement == null) {
-				anchorLevel1 = `::slotted(a[href='${this.hrefLevel1}'])`;
-				this.activeElement = this.nav.querySelector(anchorLevel1);
-			}
+			this.activeElement = this.nav.querySelector(anchorLevel1);					//  for elements added to shadow DOM
+			if (this.activeElement == null)
+				this.activeElement = this.querySelector(anchorLevel1);					//  for elements added as slot
 		}
 		if (this.activeElement) {
 			this.activeElement.scrollIntoView({block:'center'});
-			this.activeElement.classList.add('activename');								// use CSS to add ◀  xxx ►
+			this.activeElement.classList.add('activename');								//  use CSS to add ◀  xxx ►
 		}
 	}
 	
