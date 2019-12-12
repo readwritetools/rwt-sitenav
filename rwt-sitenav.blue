@@ -10,19 +10,20 @@
 //
 //=============================================================================
 
+/* create a sourceref file with content that follows this pattern
+h2 <<a *tabindex=301 `/basics.blue` Basics>>
+ul {
+	<<a *tabindex=301 `/basics/shorthand-notation-for-writers.blue` *title='Distraction-free authoring with smart tech for people who type' Shorthand Notation>>
+	<<a *tabindex=301 `/basics/hello-world.blue` *title='Learn how to use BLUE PHRASE in 3 minutes' Hello World!>>
+	<<a *tabindex=301 `/basics/getting-started-with-blue-phrase.blue` *title='Mastering the essential concepts of shorthand notation' Getting Started>>
+}
+*/
+
 !option --fragment
 
 div #nav.hide-menu {
-	/* create a sourceref file with content that follows this pattern
-	h2 <<a *tabindex=301 `/basics.blue` Basics>>
-	ul {
-		<<a *tabindex=301 `/basics/shorthand-notation-for-writers.blue` *title='Distraction-free authoring with smart tech for people who type' Shorthand Notation>>
-		<<a *tabindex=301 `/basics/hello-world.blue` *title='Learn how to use BLUE PHRASE in 3 minutes' Hello World!>>
-		<<a *tabindex=301 `/basics/getting-started-with-blue-phrase.blue` *title='Mastering the essential concepts of shorthand notation' Getting Started>>
-	}
-	*/
+	slot
 }
-
 div #pull-out-overlay {
 	div #pull-out-button.hide-menu *tabindex=301 +menu *aria-haspopup=true %2630	// trigram for heaven
 }
