@@ -1,7 +1,7 @@
 {
   "name": "rwt-sitenav",
   "description": "Popout site navigation panel, a W3C standard Web Component",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "Read Write Tools",
   "license": "MIT",
   "private": true,
