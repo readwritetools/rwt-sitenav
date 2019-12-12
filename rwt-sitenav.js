@@ -218,7 +218,7 @@ export default class RwtSitenav extends HTMLElement {
 			this.hideMenu();
 			event.stopPropagation();
 		}
-		if (event.key == "F2") {
+		if (event.key == "F10") {
 			this.toggleMenu(event);
 			event.stopPropagation();
 		}
