@@ -10,13 +10,15 @@
 //
 //=============================================================================
 
-/* create a sourceref file with content that follows this pattern
-h2 <<a *tabindex=301 `/basics.blue` Basics>>
-ul {
-	<<a *tabindex=301 `/basics/shorthand-notation-for-writers.blue` *title='Distraction-free authoring with smart tech for people who type' Shorthand Notation>>
-	<<a *tabindex=301 `/basics/hello-world.blue` *title='Learn how to use BLUE PHRASE in 3 minutes' Hello World!>>
-	<<a *tabindex=301 `/basics/getting-started-with-blue-phrase.blue` *title='Mastering the essential concepts of shorthand notation' Getting Started>>
-}
+/* Slot content into the custom element directly, or create a sourceref file with the content.
+   Either way, you should follow this pattern:
+
+	h2 <<a *tabindex=301 `/basics.blue` Basics>>
+	ul {
+		<<a *tabindex=301 `/basics/shorthand-notation-for-writers.blue` *title='Distraction-free authoring with smart tech for people who type' Shorthand Notation>>
+		<<a *tabindex=301 `/basics/hello-world.blue` *title='Learn how to use BLUE PHRASE in 3 minutes' Hello World!>>
+		<<a *tabindex=301 `/basics/getting-started-with-blue-phrase.blue` *title='Mastering the essential concepts of shorthand notation' Getting Started>>
+	}
 */
 
 !option --fragment
