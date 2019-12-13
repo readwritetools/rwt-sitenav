@@ -71,6 +71,7 @@ export default class RwtSitenav extends HTMLElement {
 		this.initializeShortcutKey();
 		this.enableTouchSwipes();
 		this.selectAndScrollActiveElement();
+		this.pulsate();
 	}
 	
 	//-------------------------------------------------------------------------
@@ -110,7 +111,7 @@ export default class RwtSitenav extends HTMLElement {
 	//< returns a document-fragment suitable for appending to shadowRoot
 	//< returns null if server does not respond with 200 or 304
 	async fetchTemplate() {
-		var response = await fetch('/node_modules/rwt-sitenav/rwt-sitenav.blue');
+		var response = await fetch('/node_modules/rwt-sitenav/rwt-sitenav.blue', {cache: "no-cache"});
 		if (response.status != 200 && response.status != 304)
 			return null;
 		var templateText = await response.text();
@@ -125,7 +126,7 @@ export default class RwtSitenav extends HTMLElement {
 	//< returns an style element suitable for appending to shadowRoot
 	//< returns null if server does not respond with 200 or 304
 	async fetchCSS() {
-		var response = await fetch('/node_modules/rwt-sitenav/rwt-sitenav.css');
+		var response = await fetch('/node_modules/rwt-sitenav/rwt-sitenav.css', {cache: "no-cache"});
 		if (response.status != 200 && response.status != 304)
 			return null;
 		var css = await response.text();
@@ -221,6 +222,25 @@ export default class RwtSitenav extends HTMLElement {
 			this.activeElement.scrollIntoView({block:'center'});
 			this.activeElement.classList.add('activename');								//  use CSS to add ◀  xxx ►
 		}
+	}
+
+	// draw attention to the pull-out nav for newcomers
+	pulsate() {
+		var b = false;
+		// if the user has never been to this website before
+		if (localStorage.getItem('rwt-sitenav-pulsate') == null) {
+			localStorage.setItem('rwt-sitenav-pulsate', 1);
+			b = true;
+		}
+		// else the user has been to this website before
+		else {
+			var numVisits = parseInt(localStorage.getItem('rwt-sitenav-pulsate')) + 1;
+			localStorage.setItem('rwt-sitenav-pulsate', numVisits);
+			if (numVisits <= 4)
+				b = true;
+		}
+		if (b)
+			this.pullOutOverlay.classList.add('pulsate');
 	}
 	
 	//-------------------------------------------------------------------------
