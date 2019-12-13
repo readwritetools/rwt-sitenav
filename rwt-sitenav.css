@@ -36,8 +36,27 @@
 	transition: opacity 2.0s;
 	z-index: 3;
 	left: 0;
-	width: 2rem;
+	width: 0.5rem;
 }
+#pull-out-overlay.pulsate {
+	animation-name: pulsate;
+	animation-duration: 3s;
+	animation-iteration-count: 1;
+}
+@keyframes pulsate {
+  0% {
+	background-color: var(--pure-black);
+    opacity: 0;
+  }
+  50% {
+	background-color: var(--pure-black);
+    opacity: 1;
+  }
+  100% {
+	background-color: initial;
+    opacity: 0.1;
+  }
+}	
 #pull-out-overlay:hover {
 	opacity: 0.9 !important;
 	transition: opacity 0.5s;
