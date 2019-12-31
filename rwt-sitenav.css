@@ -110,6 +110,7 @@
 	border-right: 1px dotted var(--white);
 	overflow-x: auto;
 	z-index: 3;
+	padding-bottom: 7rem;
 }
 #nav.show-menu {
 	left: 0px;
