@@ -1,16 +1,16 @@
 {
   "name": "rwt-sitenav",
-  "description": "Popout site navigation panel, a W3C standard Web Component",
   "version": "1.0.17",
+  "description": "Popout site navigation panel, a W3C standard Web Component",
   "author": "Read Write Tools",
   "license": "MIT",
-  "private": true,
-  "scripts": {
-    "bump-version": "npm version patch && git push && git push --tags"
-  },
+  "module": "rwt-sitenav.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/readwritetools/rwt-sitenav.git"
+  },
+  "scripts": {
+    "bump-version": "npm version patch && git push && git push --tags"
   },
   "keywords": [
     "web-component",
