@@ -13,6 +13,8 @@
 
 // ---------- check make sure repo has no uncommited work ---------- 
 run {
+	sh git add .
+	sh git commit -m "deploy"
 	sh git diff-index --quiet HEAD
 }
 
