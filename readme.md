@@ -61,9 +61,9 @@ installation are done with either NPM or via Github.
 If you are familiar with Node.js and the `package.json` file, you'll be
 comfortable installing the component just using this command:
 
-<pre>
+```bash
 npm install rwt-sitenav
-</pre>
+```
 
 If you are a front-end Web developer with no prior experience with NPM, follow
 these general steps:
@@ -71,14 +71,14 @@ these general steps:
    * Install <a href='https://nodejs.org'>Node.js/NPM</a>
 on your development computer.
    * Create a `package.json` file in the root of your web project using the command:
-<pre>
+```bash
 npm init
-</pre>
+```
 
    * Download and install the web component using the command:
-<pre>
+```bash
 npm install rwt-sitenav
-</pre>
+```
 
 
 Important note: This web component uses Node.js and NPM and `package.json` as a
@@ -92,9 +92,9 @@ If you are more comfortable using Github for installation, follow these steps:
    * Create a directory `node_modules` in the root of your web project.
    * Clone the <span>rwt-sitenav</span> web component into it using the
       command:
-<pre>
+```bash
 git clone https://github.com/readwritetools/rwt-sitenav.git
-</pre>
+```
 
 
 ### Using the web component
@@ -103,9 +103,9 @@ After installation, you need to add two things to your HTML page to make use of
 it.
 
    * Add a `script` tag to load the component's `rwt-sitenav.js` file:
-<pre>
-< script src='/node_modules/rwt-sitenav/rwt-sitenav.js' type=module>< /script>             
-</pre>
+```html
+<script src='/node_modules/rwt-sitenav/rwt-sitenav.js' type=module></script>             
+```
 
    * Add the component tag somewhere on the page.
 
@@ -118,9 +118,9 @@ it.
       * For simple dialog boxes, the `sourceref` may be omitted and the text of the dialog
          box may be slotted into the web component. Simply place the text directly
          between the `<rwt-sitenav>` and `</rwt-sitenav>` tags.
-<pre>
-< rwt-sitenav id=sitenav sourceref='/menu.html' shortcut=F9 role=navigation>< /rwt-sitenav>
-</pre>
+```html
+<rwt-sitenav id=sitenav sourceref='/menu.html' shortcut=F9 role=navigation></rwt-sitenav>
+```
 
 
 #### Menu template
@@ -135,7 +135,7 @@ The easiest way to start building your menu is to follow this pattern, which
 uses list items `li` for individual pages, and headings `h2` for grouping similar
 pages.
 
-<pre>
+```html
 <h2><a href='/products.html' >Products</a></h2>
 <ul>
     <li><a href='/products/grappling-hooks.html'>Grappling hooks</a></li>
@@ -147,7 +147,7 @@ pages.
     <li><a href='/services/training.html'>Training</a></li>
     <li><a href='/services/certification.html'>Certification</a></li>
 </ul>
-</pre>
+```
 
 #### Self identification
 
@@ -160,11 +160,11 @@ be `/services.html`.
 The short-form URL may be added to any of three special-purpose `meta` tags, like
 this:
 
-<pre>
+```html
 <meta name=sitenav:level1 content='/services.html' />
 <meta name=sitenav:level2 content='/services/certification.html' />
 <meta name=sitenav:level3 content='/services/certification/instructor.html' />
-</pre>
+```
 
 The three items correspond to the artificial hierarchical depth of the menu
 items. When the page is first loaded, the web component uses the content
@@ -178,9 +178,9 @@ level, going from `sitenav:level3` to `sitenav:level2` to `sitenav:level1`.
 Continuing with the previous example, if the current page is `https://example.com:443/services.html`
 , then this menu item will be highlighted:
 
-<pre>
+```html
 <h2><a href='/services.html' >Services</a></h2>
-</pre>
+```
 
 ### Customization
 
@@ -190,20 +190,20 @@ When visible, the menu is absolutely positioned along the left-hand side of the
 viewport. Its position and size may be overridden using CSS by defining new
 values for the top, bottom, and width variables.
 
-<pre>
+```css
 rwt-sitenav {
     --top: 0;
     --bottom: 0;
     --width: 15.5rem;
 }
-</pre>
+```
 
 #### Dialog color scheme
 
 The default color palette for the menu uses a dark mode theme. You can use CSS
 to override the variables' defaults:
 
-<pre>
+```css
 rwt-sitenav {
     --background: var(--nav-black);
     --level1-color: var(--title-blue);
@@ -211,7 +211,7 @@ rwt-sitenav {
     --accent-color: var(--yellow);
     --accent-background: var(--pure-black);
 }
-</pre>
+```
 
 ### Event interface
 
