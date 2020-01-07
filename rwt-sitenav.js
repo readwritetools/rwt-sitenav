@@ -96,7 +96,7 @@ export default class RwtSitenav extends HTMLElement {
 		
 		var sourceref = this.getAttribute('sourceref');
 
-		var response = await fetch(sourceref, {cache: "no-cache"});		// send conditional request to server with ETag and If-None-Match
+		var response = await fetch(sourceref, {cache: "no-cache", referrerPolicy: 'no-referrer'});		// send conditional request to server with ETag and If-None-Match
 		if (response.status != 200 && response.status != 304)
 			return null;
 		var templateText = await response.text();
@@ -111,7 +111,7 @@ export default class RwtSitenav extends HTMLElement {
 	//< returns a document-fragment suitable for appending to shadowRoot
 	//< returns null if server does not respond with 200 or 304
 	async fetchTemplate() {
-		var response = await fetch('/node_modules/rwt-sitenav/rwt-sitenav.blue', {cache: "no-cache"});
+		var response = await fetch('/node_modules/rwt-sitenav/rwt-sitenav.blue', {cache: "no-cache", referrerPolicy: 'no-referrer'});
 		if (response.status != 200 && response.status != 304)
 			return null;
 		var templateText = await response.text();
@@ -126,7 +126,7 @@ export default class RwtSitenav extends HTMLElement {
 	//< returns an style element suitable for appending to shadowRoot
 	//< returns null if server does not respond with 200 or 304
 	async fetchCSS() {
-		var response = await fetch('/node_modules/rwt-sitenav/rwt-sitenav.css', {cache: "no-cache"});
+		var response = await fetch('/node_modules/rwt-sitenav/rwt-sitenav.css', {cache: "no-cache", referrerPolicy: 'no-referrer'});
 		if (response.status != 200 && response.status != 304)
 			return null;
 		var css = await response.text();
