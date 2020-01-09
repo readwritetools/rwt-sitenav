@@ -24,6 +24,7 @@ export default class RwtSitenav extends HTMLElement {
 
 		// properties
 		this.shortcutKey = null;
+		RwtSitenav.elementInstance++;
 		this.collapseSender = `RwtSitenav ${RwtSitenav.elementInstance}`;
 
 		// touch interface for swipe left/right

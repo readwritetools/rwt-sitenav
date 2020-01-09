@@ -44,6 +44,9 @@ The component has these features:
    * The first few times that a visitor interacts with your website, the menu button
       pulses to draw attention to itself.
    * The menu scrolls vertically, accommodating any number of menu items.
+   * Menu items may be kept separate from the web component, allowing the webmaster
+      to change its contents in a single centralized place. Alternatively, menu items
+      may be slotted directly between the component's opening and closing tags.
    * The menu item corresponding to the current page is highlighted and scrolled into
       view when the page is first loaded.
    * The menu has an event interface for showing and hiding itself.
@@ -114,10 +117,10 @@ it.
          menu's text and any CSS it needs.
       * Optionally, apply a `shortcut` attribute with something like `F9`, `F10`, etc. for
          hotkey access.
-      * And for WAI-ARIA accessibility apply a `role=navigation` attribute.
-      * For simple dialog boxes, the `sourceref` may be omitted and the text of the dialog
-         box may be slotted into the web component. Simply place the text directly
-         between the `<rwt-sitenav>` and `</rwt-sitenav>` tags.
+      * For WAI-ARIA accessibility apply a `role=navigation` attribute.
+      * For simple menus, the `sourceref` may be omitted and the menu hyperlinks may be
+         slotted into the web component. Simply place the hyperlinks directly between the
+`<rwt-sitenav>` and `</rwt-sitenav>` tags.
 ```html
 <rwt-sitenav id=sitenav sourceref='/menu.html' shortcut=F9 role=navigation></rwt-sitenav>
 ```
@@ -198,7 +201,7 @@ rwt-sitenav {
 }
 ```
 
-#### Dialog color scheme
+#### Menu color scheme
 
 The default color palette for the menu uses a dark mode theme. You can use CSS
 to override the variables' defaults:
@@ -244,4 +247,13 @@ License.
 	<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 	<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </details>
+
+### Availability
+
+
+<table>
+	<tr><td>Source code</td> 			<td><a href='https://github.com/readwritetools/rwt-sitenav'>github</a></td></tr>
+	<tr><td>Package installation</td> <td><a href='https://www.npmjs.com/package/rwt-sitenav'>NPM</a></td></tr>
+	<tr><td>Documentation</td> 		<td><a href='https://hub.readwritetools.com/components/sitenav.blue'>Read Write Hub</a></td></tr>
+</table>
 
