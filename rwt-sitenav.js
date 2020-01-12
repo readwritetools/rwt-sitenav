@@ -158,12 +158,9 @@ export default class RwtSitenav extends HTMLElement {
 
 	//^ Get the user-specified shortcut key. This will be used to open the dialog.
 	//  Valid values are "F1", "F2", etc., specified with the *shortcut attribute on the custom element
-	//  Default value is "F9"
 	initializeShortcutKey() {
 		if (this.hasAttribute('shortcut'))
 			this.shortcutKey = this.getAttribute('shortcut');
-		else
-			this.shortcutKey = 'F9';
 	}
 
 	// Register swipe left and swipe right as toggleMenu initiators
@@ -262,7 +259,7 @@ export default class RwtSitenav extends HTMLElement {
 			event.stopPropagation();
 		}
 		// like 'F1', 'F2', etc
-		if (event.key == this.shortcutKey) {
+		if (event.key == this.shortcutKey && this.shortcutKey != null) {
 			this.toggleMenu(event);
 			event.stopPropagation();
 			event.preventDefault();
