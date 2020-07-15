@@ -9,26 +9,34 @@
 //
 //=============================================================================
 
-export default class RwtSitenav extends HTMLElement {
+const Static = {
+	componentName:    'rwt-sitenav',
+	elementInstance:  1,
+	htmlURL:          '/node_modules/rwt-sitenav/rwt-sitenav.blue',
+	cssURL:           '/node_modules/rwt-sitenav/rwt-sitenav.css',
+	htmlText:         null,
+	cssText:          null
+};
 
-	static elementInstance = 1;
-	static htmlURL  = '/node_modules/rwt-sitenav/rwt-sitenav.blue';
-	static cssURL   = '/node_modules/rwt-sitenav/rwt-sitenav.css';
-	static htmlText = null;
-	static cssText  = null;
+Object.seal(Static);
+
+export default class RwtSitenav extends HTMLElement {
 
 	constructor() {
 		super();
 		
+		// guardrails
+		this.instance = Static.elementInstance++;
+		this.isComponentLoaded = false;
+
+		// properties
+		this.collapseSender = `${Static.componentName} ${this.instance}`;
+		this.shortcutKey = null;
+
 		// child elements
 		this.nav = null;
 		this.pullOutButton = null;
 		this.pullOutOverlay = null;
-
-		// properties
-		this.shortcutKey = null;
-		this.instance = RwtSitenav.elementInstance++;
-		this.collapseSender = `RwtSitenav ${this.instance}`;
 
 		// touch interface for swipe left/right
 		this.swipe1 = null;
@@ -70,6 +78,7 @@ export default class RwtSitenav extends HTMLElement {
 			this.enableTouchSwipes();
 			this.selectAndScrollActiveElement();
 			this.pulsate();
+			this.sendComponentLoaded();
 		}
 		catch (err) {
 			console.log(err.message);
@@ -90,24 +99,24 @@ export default class RwtSitenav extends HTMLElement {
 	// and resolve the promise with a DocumentFragment.
 	getHtmlFragment() {
 		return new Promise(async (resolve, reject) => {
-			var htmlTemplateReady = `RwtSitenav-html-template-ready`;
+			var htmlTemplateReady = `${Static.componentName}-html-template-ready`;
 			
 			document.addEventListener(htmlTemplateReady, () => {
 				var template = document.createElement('template');
-				template.innerHTML = RwtSitenav.htmlText;
+				template.innerHTML = Static.htmlText;
 				resolve(template.content);
 			});
 			
 			if (this.instance == 1) {
-				var response = await fetch(RwtSitenav.htmlURL, {cache: "no-cache", referrerPolicy: 'no-referrer'});
+				var response = await fetch(Static.htmlURL, {cache: "no-cache", referrerPolicy: 'no-referrer'});
 				if (response.status != 200 && response.status != 304) {
-					reject(new Error(`Request for ${RwtSitenav.htmlURL} returned with ${response.status}`));
+					reject(new Error(`Request for ${Static.htmlURL} returned with ${response.status}`));
 					return;
 				}
-				RwtSitenav.htmlText = await response.text();
+				Static.htmlText = await response.text();
 				document.dispatchEvent(new Event(htmlTemplateReady));
 			}
-			else if (RwtSitenav.htmlText != null) {
+			else if (Static.htmlText != null) {
 				document.dispatchEvent(new Event(htmlTemplateReady));
 			}
 		});
@@ -118,24 +127,24 @@ export default class RwtSitenav extends HTMLElement {
 	// and resolve the promise with that element.
 	getCssStyleElement() {
 		return new Promise(async (resolve, reject) => {
-			var cssTextReady = `RwtSitenav-css-text-ready`;
+			var cssTextReady = `${Static.componentName}-css-text-ready`;
 
 			document.addEventListener(cssTextReady, () => {
 				var styleElement = document.createElement('style');
-				styleElement.innerHTML = RwtSitenav.cssText;
+				styleElement.innerHTML = Static.cssText;
 				resolve(styleElement);
 			});
 			
 			if (this.instance == 1) {
-				var response = await fetch(RwtSitenav.cssURL, {cache: "no-cache", referrerPolicy: 'no-referrer'});
+				var response = await fetch(Static.cssURL, {cache: "no-cache", referrerPolicy: 'no-referrer'});
 				if (response.status != 200 && response.status != 304) {
-					reject(new Error(`Request for ${RwtSitenav.cssURL} returned with ${response.status}`));
+					reject(new Error(`Request for ${Static.cssURL} returned with ${response.status}`));
 					return;
 				}
-				RwtSitenav.cssText = await response.text();
+				Static.cssText = await response.text();
 				document.dispatchEvent(new Event(cssTextReady));
 			}
-			else if (RwtSitenav.cssText != null) {
+			else if (Static.cssText != null) {
 				document.dispatchEvent(new Event(cssTextReady));
 			}
 		});
@@ -255,7 +264,7 @@ export default class RwtSitenav extends HTMLElement {
 		}
 	}
 
-	// draw attention to the pull-out nav for newcomers
+	//^ Draw attention to the pull-out nav for newcomers
 	pulsate() {
 		var b = false;
 		// if the user has never been to this website before
@@ -272,6 +281,22 @@ export default class RwtSitenav extends HTMLElement {
 		}
 		if (b)
 			this.pullOutOverlay.classList.add('pulsate');
+	}
+	
+	//^ Inform the document's custom element that it is ready for programmatic use 
+	sendComponentLoaded() {
+		this.isComponentLoaded = true;
+		this.dispatchEvent(new Event('component-loaded', {bubbles: true}));
+	}
+
+	//^ A Promise that resolves when the component is loaded
+	waitOnLoading() {
+		return new Promise((resolve) => {
+			if (this.isComponentLoaded == true)
+				resolve();
+			else
+				this.addEventListener('component-loaded', resolve);
+		});
 	}
 	
 	//-------------------------------------------------------------------------
@@ -422,4 +447,4 @@ class Swipe {
 	}
 }
 
-window.customElements.define('rwt-sitenav', RwtSitenav);
+window.customElements.define(Static.componentName, RwtSitenav);
