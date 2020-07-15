@@ -218,22 +218,31 @@ rwt-sitenav {
 }
 ```
 
-### Event interface
+### Life-cycle events
+
+The component issues life-cycle events.
+
+
+<dl>
+	<dt><code>component-loaded</code></dt>
+	<dd>Sent when the component is fully loaded and ready to be used. As a convenience you can use the <code>waitOnLoading()</code> method which returns a promise that resolves when the <code>component-loaded</code> event is received. Call this asynchronously with <code>await</code>.</dd>
+</dl>
+
+### Event controllers
 
 The menu can be controlled with its event interface.
 
-The component listens on DOM `document` for `toggle-sitenav` messages. Upon receipt
-it will show or hide the menu.
 
-The component listens on DOM `document` for `keydown` messages. If the user presses
-the configured shortcut key (<kbd>F9</kbd>, <kbd>F10</kbd>, etc) it will
-show/hide the menu. The <kbd>Esc</kbd> key hides the menu.
-
-The component listens on DOM `document` for `collapse-popup` messages, which are
-sent by sibling menus or dialog boxes. Upon receipt it will close itself.
-
-The component listens on DOM `document` for `click` messages. When the user clicks
-anywhere outside the menu, it closes itself.
+<dl>
+	<dt><code>toggle-sitenav</code></dt>
+	<dd>The component listens on DOM <code>document</code> for <code>toggle-sitenav</code> messages. Upon receipt it will show or hide the menu.</dd>
+	<dt><code>keydown</code></dt>
+	<dd>The component listens on DOM <code>document</code> for <code>keydown</code> messages. If the user presses the configured shortcut key (<kbd>F9</kbd>, <kbd>F10</kbd>, etc) it will show/hide the menu. The <kbd>Esc</kbd> key hides the menu.</dd>
+	<dt><code>collapse-popup</code></dt>
+	<dd>The component listens on DOM <code>document</code> for <code>collapse-popup</code> messages, which are sent by sibling menus or dialog boxes. Upon receipt it will close itself.</dd>
+	<dt><code>click</code></dt>
+	<dd>The component listens on DOM <code>document</code> for <code>click</code> messages. When the user clicks anywhere outside the menu, it closes itself.</dd>
+</dl>
 
 ### License
 
