@@ -6,10 +6,16 @@
 
 
 
+
+
+
+
 <figure>
 	<img src='/img/components/sitenav/sitenav-unsplash-marjanblan.jpg' width='100%' />
 	<figcaption></figcaption>
 </figure>
+
+##### Open Source DOM Component
 
 # Sitenav
 
@@ -23,7 +29,7 @@
 
 <table>
 	<tr><th>Abstract</th></tr>
-	<tr><td>The <span class=product>rwt-sitenav</span> web component is a pull-out website navigation menu, with subtle hamburger button, and default activation of the menu item for the current page.</td></tr>
+	<tr><td>The <span class=product>rwt-sitenav</span> DOM component is a pull-out website navigation menu, with subtle hamburger button, and default activation of the menu item for the current page.</td></tr>
 </table>
 
 ### Motivation
@@ -31,7 +37,7 @@
 Sometimes you need to provide your website visitors with quick access to a large
 quantity of pages without cluttering the main reading area of the page.
 
-The <span>rwt-sitenav</span> web component does this by keeping the menu
+The <span>rwt-sitenav</span> DOM component does this by keeping the menu
 off the left-hand side of the page until the user needs it. The menu is
 activated, sliding over the page content, when the user clicks on the hamburger
 menu button. Activation may also be initiated through the component's `toggleMenu`
@@ -44,7 +50,7 @@ The component has these features:
    * The first few times that a visitor interacts with your website, the menu button
       pulses to draw attention to itself.
    * The menu scrolls vertically, accommodating any number of menu items.
-   * Menu items may be kept separate from the web component, allowing the webmaster
+   * Menu items may be kept separate from the DOM component, allowing the webmaster
       to change its contents in a single centralized place. Alternatively, menu items
       may be slotted directly between the component's opening and closing tags.
    * The menu item corresponding to the current page is highlighted and scrolled into
@@ -53,9 +59,16 @@ The component has these features:
    * The menu emits a custom event to close sibling menus and dialog boxes.
    * A keyboard listener is provided to allow a shortcut key to open/close the menu.
 
+#### In the wild
+
+To see an example of this component in use, visit the <a href='https://fiddle.blue/'><span class=bp>BLUE</span><span class=phrase>FIDDLE</span></a>
+website and press <kbd>F1</kbd> "Menu". To understand what's going on under the
+hood, use the browser's inspector to view the HTML source code and network
+activity, and follow along as you read this documentation.
+
 #### Prerequisites
 
-The <span>rwt-sitenav</span> web component works in any browser that
+The <span>rwt-sitenav</span> DOM component works in any browser that
 supports modern W3C standards. Templates are written using <span>BLUE</span><span>
 PHRASE</span> notation, which can be compiled into HTML using the free <a href='https://hub.readwritetools.com/desktop/rwview.blue'>Read Write View</a>
 desktop app. It has no other prerequisites. Distribution and installation are
@@ -80,14 +93,14 @@ on your development computer.
 npm init
 ```
 
-   * Download and install the web component using the command:
+   * Download and install the DOM component using the command:
 ```bash
 npm install rwt-sitenav
 ```
 
 
-Important note: This web component uses Node.js and NPM and `package.json` as a
-convenient *distribution and installation* mechanism. The web component itself
+Important note: This DOM component uses Node.js and NPM and `package.json` as a
+convenient *distribution and installation* mechanism. The DOM component itself
 does not need them.
 
 #### Installation using Github
@@ -95,14 +108,14 @@ does not need them.
 If you are more comfortable using Github for installation, follow these steps:
 
    * Create a directory `node_modules` in the root of your web project.
-   * Clone the <span>rwt-sitenav</span> web component into it using the
+   * Clone the <span>rwt-sitenav</span> DOM component into it using the
       command:
 ```bash
 git clone https://github.com/readwritetools/rwt-sitenav.git
 ```
 
 
-### Using the web component
+### Using the DOM component
 
 After installation, you need to add two things to your HTML page to make use of
 it.
@@ -121,7 +134,7 @@ it.
          hotkey access.
       * For WAI-ARIA accessibility apply a `role=navigation` attribute.
       * For simple menus, the `sourceref` may be omitted and the menu hyperlinks may be
-         slotted into the web component. Simply place the hyperlinks directly between the
+         slotted into the DOM component. Simply place the hyperlinks directly between the
 `<rwt-sitenav>` and `</rwt-sitenav>` tags.
 ```html
 <rwt-sitenav id=sitenav sourceref='/menu.html' shortcut=F9 role=navigation></rwt-sitenav>
@@ -172,7 +185,7 @@ this:
 ```
 
 The three items correspond to the artificial hierarchical depth of the menu
-items. When the page is first loaded, the web component uses the content
+items. When the page is first loaded, the DOM component uses the content
 attribute of these meta tags as search terms, looking for the menu item with a
 matching anchor `href`. When found, that menu item is highlighted and scrolled
 into view.
@@ -244,9 +257,22 @@ The menu can be controlled with its event interface.
 	<dd>The component listens on DOM <code>document</code> for <code>click</code> messages. When the user clicks anywhere outside the menu, it closes itself.</dd>
 </dl>
 
+---
+
+### Reference
+
+
+<table>
+	<tr><td><img src='/img/read-write-hub.png' alt='DOM components logo' width=40 /></td>	<td>Documentation</td> 		<td><a href='https://hub.readwritetools.com/components/sitenav.blue'>READ WRITE HUB</a></td></tr>
+	<tr><td><img src='/img/git.png' alt='git logo' width=40 /></td>	<td>Source code</td> 			<td><a href='https://github.com/readwritetools/rwt-sitenav'>github</a></td></tr>
+	<tr><td><img src='/img/dom-components.png' alt='DOM components logo' width=40 /></td>	<td>Component catalog</td> 	<td><a href='https://domcomponents.com/sitenav.blue'>DOM COMPONENTS</a></td></tr>
+	<tr><td><img src='/img/npm.png' alt='npm logo' width=40 /></td>	<td>Package installation</td> <td><a href='https://www.npmjs.com/package/rwt-sitenav'>npm</a></td></tr>
+	<tr><td><img src='/img/read-write-stack.png' alt='Read Write Stack logo' width=40 /></td>	<td>Publication venue</td>	<td><a href='https://readwritestack.com/components/sitenav.blue'>READ WRITE STACK</a></td></tr>
+</table>
+
 ### License
 
-The <span>rwt-sitenav</span> web component is licensed under the MIT
+The <span>rwt-sitenav</span> DOM component is licensed under the MIT
 License.
 
 <img src='/img/blue-seal-mit.png' width=80 align=right />
@@ -258,13 +284,4 @@ License.
 	<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 	<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </details>
-
-### Availability
-
-
-<table>
-	<tr><td>Source code</td> 			<td><a href='https://github.com/readwritetools/rwt-sitenav'>github</a></td></tr>
-	<tr><td>Package installation</td> <td><a href='https://www.npmjs.com/package/rwt-sitenav'>NPM</a></td></tr>
-	<tr><td>Documentation</td> 		<td><a href='https://hub.readwritetools.com/components/sitenav.blue'>Read Write Hub</a></td></tr>
-</table>
 
