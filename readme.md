@@ -213,6 +213,7 @@ rwt-sitenav {
     --top: 0;
     --bottom: 0;
     --width: 15.5rem;
+    --z-index: 1;
 }
 ```
 
