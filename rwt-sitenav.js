@@ -408,8 +408,8 @@ class Swipe {
 	}
 
 	initializeListeners() {
-		this.element.addEventListener('touchstart', this.onTouchStart.bind(this), false);
-		this.element.addEventListener('touchmove', this.onTouchMove.bind(this), false);
+		this.element.addEventListener('touchstart', this.onTouchStart.bind(this), {passive: false});	// https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
+		this.element.addEventListener('touchmove', this.onTouchMove.bind(this), {passive: false});		// https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
 	}
 
 	onTouchStart(event) {
